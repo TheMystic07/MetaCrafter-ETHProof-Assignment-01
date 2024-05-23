@@ -19,7 +19,7 @@ An in-depth paragraph about your project and overview of use.
 2. Compile
 3. Deploy
 * Contract
-```sol
+```cpp
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.18;
 
