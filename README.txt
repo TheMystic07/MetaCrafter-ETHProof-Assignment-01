@@ -1,28 +1,90 @@
-REMIX DEFAULT WORKSPACE
+# ETH Proof  beginner  Assignment 
 
-Remix default workspace is present when:
-i. Remix loads for the very first time 
-ii. A new workspace is created with 'Default' template
-iii. There are no files existing in the File Explorer
+Simple overview of use/purpose.
 
-This workspace contains 3 directories:
+## Description
 
-1. 'contracts': Holds three contracts with increasing levels of complexity.
-2. 'scripts': Contains four typescript files to deploy a contract. It is explained below.
-3. 'tests': Contains one Solidity test file for 'Ballot' contract & one JS test file for 'Storage' contract.
+An in-depth paragraph about your project and overview of use.
 
-SCRIPTS
+## Getting Started
 
-The 'scripts' folder has four typescript files which help to deploy the 'Storage' contract using 'web3.js' and 'ethers.js' libraries.
+### Installing
 
-For the deployment of any other contract, just update the contract's name from 'Storage' to the desired contract and provide constructor arguments accordingly 
-in the file `deploy_with_ethers.ts` or  `deploy_with_web3.ts`
+*No Installation Needed 
 
-In the 'tests' folder there is a script containing Mocha-Chai unit tests for 'Storage' contract.
+### Executing program
 
-To run a script, right click on file name in the file explorer and click 'Run'. Remember, Solidity file must already be compiled.
-Output from script will appear in remix terminal.
+* How to run the program
+1. Open In Remix 
+2. Compile
+3. Deploy
+* Contract
+```sol
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.18;
 
-Please note, require/import is supported in a limited manner for Remix supported modules.
-For now, modules supported by Remix are ethers, web3, swarmgw, chai, multihashes, remix and hardhat only for hardhat.ethers object/plugin.
-For unsupported modules, an error like this will be thrown: '<module_name> module require is not supported by Remix IDE' will be shown.
+/*
+       REQUIREMENTS
+    1. Your contract will have public variables that store the details about your coin (Token Name, Token Abbrv., Total Supply)
+    2. Your contract will have a mapping of addresses to accounts (address => uint)
+    3. You will have a mint function that takes two parameters: an address and a value. 
+       The function then increases the total supply by that number and increases the balance 
+       of the “sender” address by that amount
+    4. Your contract will have a burn function, which works the opposite of the mint function, as it will destroy tokens. 
+       It will take an address and value just like the mint functions. It will then deduct the value from the total supply 
+       and from the balance of the “sender”.
+    5. Lastly, your burn function should have conditionals to make sure the balance of "sender" is greater than or equal 
+       to the amount that is supposed to be burned.
+*/
+
+contract MyToken {
+
+    // public variables here
+    string  public tokenName = "Mystic Coin";
+    string public tokenNot  = "MC";
+    uint256 public totalSupply = 0;
+
+
+
+
+    // mapping variable here
+        mapping (address => uint256) public accounts;
+
+    // mint function
+    function mintToken(address _address ,uint256 _value ) public {
+            totalSupply+=_value;
+            accounts[_address] += _value;
+            
+    }
+    // burn function
+        function burnToken(address _address ,uint256 _value ) public  {
+            if(accounts[_address]>=_value){
+
+            totalSupply -=_value;
+            accounts[_address] -= _value;
+            }   
+            
+    }
+
+}
+
+```
+
+## Help
+
+Any advise for common problems or issues.
+```
+command to run if program contains helper info
+```
+
+## Authors
+
+Contributors names and contact info
+
+ex. Dominique Pizzie  
+ex. [@DomPizzie](https://twitter.com/dompizzie)
+
+
+## License
+
+This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
